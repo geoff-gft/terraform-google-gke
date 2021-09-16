@@ -32,8 +32,6 @@ resource "google_container_cluster" "cluster" {
   network    = var.network
   subnetwork = var.subnetwork
 
-  enable_istio    = var.enable_istio
-
   logging_service    = var.logging_service
   monitoring_service = var.monitoring_service
   min_master_version = local.kubernetes_version
