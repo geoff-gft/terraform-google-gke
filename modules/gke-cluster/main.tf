@@ -32,6 +32,8 @@ resource "google_container_cluster" "cluster" {
   network    = var.network
   subnetwork = var.subnetwork
 
+  enable_istio    = var.enable_istio
+
   logging_service    = var.logging_service
   monitoring_service = var.monitoring_service
   min_master_version = local.kubernetes_version
@@ -90,6 +92,11 @@ resource "google_container_cluster" "cluster" {
 
     network_policy_config {
       disabled = !var.enable_network_policy
+    }
+
+    istio_config {
+      disabled = !var.enable_istio
+      auth = var.istio_auth
     }
   }
 
