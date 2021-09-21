@@ -49,7 +49,9 @@ resource "google_container_cluster" "cluster" {
 
   initial_node_count = 1
 
-  service_account = var.alternative_default_service_account
+  node_config {
+    service_account = var.alternative_default_service_account
+  }
 
   # ip_allocation_policy.use_ip_aliases defaults to true, since we define the block `ip_allocation_policy`
   ip_allocation_policy {
